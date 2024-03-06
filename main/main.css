@@ -1,0 +1,92 @@
+/* Body styles */
+body {
+  font-family: "Roboto", sans-serif; /* Use Roboto font */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+/* Container styles */
+.container {
+  max-width: 600px;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+.questionNumber {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+  font-family: "Arial", sans-serif; /* Use Arial font for heading */
+}
+
+.testPart {
+  text-align: center;
+}
+
+/* Image styles */
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Form styles */
+form {
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 30px 100px;
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  align-items: center;
+}
+
+/* Radio button styles */
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Submit sutton styles */
+.submitBTN {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submitBTN:hover {
+  background-color: #0056b3;
+}
+
+/* Answer options styles */
+.answersBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 20px;
+}
+
+.task {
+  font-style: italic;
+  margin: 10px;
+  font-size: 18px;
+}
+
+hr {
+  width: 25vw;
+}
+
+.testPart {
+  font-size: 30px;
+}

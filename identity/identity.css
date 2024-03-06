@@ -1,0 +1,79 @@
+html {
+  height: 100vh;
+  overflow: hidden;
+  box-shadow: inset 0 0 15px rgb(0, 0, 0);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 50%;
+  margin: auto;
+  background-color: #fdffe6; /* Sunny yellow palette */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.submit {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  color: black;
+  background-color: orange;
+  border-radius: 0 10px 10px 0;
+  transition: all 200ms linear;
+}
+
+.submit:hover {
+  color: yellow;
+  transform: scale(1.1);
+}
+
+.form-group label {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.context {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+}
+
+.logo {
+  color: #333;
+  position: relative;
+  top: -60px; /* Adjust vertical positioning as needed */
+  text-shadow: 0 0 2px #fff; /* Subtle white drop shadow */
+  font-size: 50px;
+  background-color: orange;
+  border: 1px solid orange;
+  border-radius: 15px;
+  display: inline-block;
+  padding: 10px 40px;
+}

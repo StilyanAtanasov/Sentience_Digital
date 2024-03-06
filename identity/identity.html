@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Identity page</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="identity.css" />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+    />
+  </head>
+  <body>
+    <main>
+      <section class="container">
+        <h1 class="logo">Sentience Identity</h1>
+        <form
+          onsubmit="event.preventDefault(); setUserName(document.getElementById('username').value);"
+        >
+          <div class="form-group">
+            <label for="name">How should we call you?</label>
+            <input
+              type="text"
+              id="username"
+              name="name"
+              placeholder="Your name..."
+              required
+            />
+            <button class="submit" href="" type="submit">
+              <i class="fa-regular fa-check"></i>
+            </button>
+          </div>
+          <p class="context">
+            "Your name will be used to display your position in the
+            leaderboard."
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <script src="../JS/core.js" type="module"></script>
+    <script src="../JS/identity.js"></script>
+  </body>
+</html>
