@@ -14,9 +14,11 @@
   <body>
     <main>
       <section class="container">
-        <h1 class="logo">Sentience Identity</h1>
+        <h1 class="logo">
+          <i class="fa-brands fa-teamspeak"></i> Sentience Digital
+        </h1>
         <form
-          onsubmit="event.preventDefault(); setUserName(document.getElementById('username').value);"
+          onsubmit="event.preventDefault(); validateForm(document.getElementById('username').value);"
         >
           <div class="form-group">
             <label for="name">How should we call you?</label>
