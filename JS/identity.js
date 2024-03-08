@@ -9,7 +9,7 @@ function validateForm(input) {
   }
 
   // Check if the username contains sensitive or offensive words
-  let flaggedWordFound;
+  let flaggedWordFound = `--none`;
   fetch("../security/Lists of sensitive and offensive words[English].txt")
     .then((res) => res.text())
     .then((text) => {
@@ -23,11 +23,10 @@ function validateForm(input) {
           return;
         }
       });
+
+      if (flaggedWordFound === `--none`) setUserName(username);
     })
     .catch((e) => console.error(e));
-
-  if (flaggedWordFound !== null) return;
-  setUserName(username);
 }
 
 // Set user's name
