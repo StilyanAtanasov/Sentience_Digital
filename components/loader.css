@@ -5,6 +5,11 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: absolute;
+  background-color: #f0f0f0;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .loader {
@@ -15,11 +20,28 @@
       no-repeat,
     conic-gradient(#0000 30%, #ffa516);
   mask: radial-gradient(farthest-side, #0000 calc(100% - 1rem), #000 0);
-  animation: l13 1s infinite linear;
+  animation: spin 1s infinite linear;
 }
 
-@keyframes l13 {
+.loaderBox.hidden {
+  animation-name: hide;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes spin {
   100% {
     transform: rotate(1turn);
+  }
+}
+
+@keyframes hide {
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    display: none;
   }
 }
