@@ -4,25 +4,25 @@ function validateForm(input) {
 
   // Check if the username is whitespace
   if (username === ``) {
-    alert(`Please enter valid input.`);
+    alert(`The username cannot be whitespace only!`);
     return;
   }
 
-  // Check if the username contains sensitive or offensive words
+  // Check if the username contains sensitive or offensive words from a list of predefined word of this kind
   let flaggedWordFound = `--none`;
-  fetch("../security/Lists of sensitive and offensive words[English].txt")
+  fetch("../security/Lists of sensitive and offensive words.txt")
     .then((res) => res.text())
     .then((text) => {
       const words = text.split("\n").map((word) => word.trim());
-      words.forEach((word) => {
+      for (const word of words) {
         if (String(username).includes(word)) {
           flaggedWordFound = word;
           alert(
-            `Username cannot contain ${flaggedWordFound}! Please do not include sensitive or offensive word in your username!`
+            `Username cannot contain ${flaggedWordFound}! Please do not include sensitive or offensive words in your username!`
           );
-          return;
+          break;
         }
-      });
+      }
 
       if (flaggedWordFound === `--none`) setUserName(username);
     })
