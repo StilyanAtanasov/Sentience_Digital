@@ -4,14 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Identity page</title>
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="identity.css" />
     <link
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
     />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="identity.css" />
   </head>
   <body>
+    <!-- 
+      This HTML file contains the logic for our identity page.
+      It allows users to sign up by providing their username only, which is used to display their submitted results later on.
+      The form includes client-side validation to ensure that the username is not offensive or sensitive.
+      Upon successful validation, the user is redirected to the main page.
+    -->
+
     <main>
       <section class="container">
         <h1 class="logo">
@@ -22,6 +29,7 @@
         >
           <div class="form-group">
             <label for="name">How should we call you?</label>
+            <!-- Request for the user's name-->
             <input
               type="text"
               id="username"
