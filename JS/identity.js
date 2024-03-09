@@ -1,4 +1,4 @@
-// Validate the form
+// ----- Validate the form
 function validateForm(input) {
   let username = input.trim(); // Trim whitespace
 
@@ -24,12 +24,12 @@ function validateForm(input) {
         }
       }
 
-      if (flaggedWordFound === `--none`) setUserName(username);
+      if (flaggedWordFound === `--none`) setUserName(username); // Call the setUserName() function to proccess the next step of the operation
     })
     .catch((e) => console.error(e));
 }
 
-// Set user's name
+// ----- Set user's name
 function setUserName(name) {
   // Encode the username to ensure special characters are properly handled
   window.location.replace(

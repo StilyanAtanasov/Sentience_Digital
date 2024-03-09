@@ -1,7 +1,6 @@
 "use strict";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 import {
   getDatabase,
   ref,
@@ -24,8 +23,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
+// Database connections
 const database = getDatabase(app);
 const rootRef = ref(database, "users");
 
