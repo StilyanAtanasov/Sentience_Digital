@@ -1,5 +1,12 @@
-// ----- Validate the form
-function validateForm(input) {
+document
+  .querySelector("form")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    await setUserName(username);
+  });
+
+export function validateUsername(input) {
   let username = input.trim(); // Trim whitespace
 
   // Check if the username is whitespace
@@ -9,30 +16,34 @@ function validateForm(input) {
   }
 
   // Check if the username contains sensitive or offensive words from a list of predefined word of this kind
-  let flaggedWordFound = `--none`;
-  fetch("../security/Lists of sensitive and offensive words.txt")
+  return fetch("../security/Lists of sensitive and offensive words.txt")
     .then((res) => res.text())
     .then((text) => {
       const words = text.split("\n").map((word) => word.trim());
+      let usernameLower = username.toLowerCase();
       for (const word of words) {
-        if (String(username).includes(word)) {
-          flaggedWordFound = word;
+        if (usernameLower.includes(word.toLowerCase())) {
           alert(
-            `Username cannot contain ${flaggedWordFound}! Please do not include sensitive or offensive words in your username!`
+            `Username cannot contain ${word}! Please do not include sensitive or offensive words in your username!`
           );
-          break;
+          return false;
         }
       }
 
-      if (flaggedWordFound === `--none`) setUserName(username); // Call the setUserName() function to proccess the next step of the operation
+      return true;
     })
-    .catch((e) => console.error(e));
+    .catch((e) => {
+      console.error(e);
+      return false;
+    });
 }
 
 // ----- Set user's name
-function setUserName(name) {
+export async function setUserName(username) {
+  //Validate the username
+  if (!(await validateUsername(username))) return;
   // Encode the username to ensure special characters are properly handled
   window.location.replace(
-    `../main/main.html?username=${encodeURIComponent(name)}`
+    `../main/main.html?username=${encodeURIComponent(username)}`
   );
 }
