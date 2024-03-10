@@ -14,8 +14,9 @@ function validateForm(input) {
     .then((res) => res.text())
     .then((text) => {
       const words = text.split("\n").map((word) => word.trim());
+      let usernameLower = username.toLowerCase();
       for (const word of words) {
-        if (String(username).includes(word)) {
+        if (usernameLower.includes(word.toLowerCase())) {
           flaggedWordFound = word;
           alert(
             `Username cannot contain ${flaggedWordFound}! Please do not include sensitive or offensive words in your username!`
