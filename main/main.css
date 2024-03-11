@@ -29,13 +29,33 @@ body {
 
 .testPart {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Image styles */
-img {
-  max-width: 100%;
+.questionBox h4 {
+  text-align: center;
+}
+
+/* Color Box styles */
+.colorBox {
+  width: 100%;
   height: auto;
   margin-bottom: 10px;
+  display: flex;
+  border: 1px solid #333;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.colorBox div {
+  width: 25%;
+  height: auto;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 /* Form styles */
