@@ -1,5 +1,58 @@
 import { validateUsername } from "./identity.js";
 
+// Initialize the static values for the page
+const colourSets = {
+  special: [
+    "#FFC300",
+    "#DAF7A6",
+    "#9f002e",
+    "#FF7650",
+    "#4069e6",
+    "#FFC300",
+    "#797676",
+    "#faebef",
+    "#7c8962",
+    "#FF5741",
+  ],
+  common: [
+    "#66CCFF",
+    "#66FF99",
+    "#c70039",
+    "#FF6666",
+    "#3366FF",
+    "#ffc91a",
+    "#787676",
+    "#fbeef1",
+    "#7d8962",
+    "#FF5740",
+  ],
+};
+const testPartsHeadingNumbers = [`I`, `II`];
+const questionDifficulties = [
+  `[Easy]`,
+  `[Easy]`,
+  `[Easy]`,
+  `[Medium]`,
+  `[Medium]`,
+  `[Medium]`,
+  `[Hard]`,
+  `[Hard]`,
+  `[Hard]`,
+  `[Extreme]`,
+];
+
+// Generator of random numbers -- for the answers of the test
+function generateRandomNumbers() {
+  const numbers = [];
+  for (let i = 0; i < 10; i++) numbers.push(Math.floor(Math.random() * 4) + 1);
+
+  return numbers;
+}
+
+// Generate randow answers for the test
+const testAnswers = generateRandomNumbers();
+console.log(testAnswers);
+
 // --------- Handle Page
 window.addEventListener(`load`, function () {
   // Retrieve a reference the test form
@@ -13,7 +66,7 @@ window.addEventListener(`load`, function () {
     // Initialize the part heading
     const heading = document.createElement(`h2`);
     heading.className = `testPart`;
-    heading.innerText = `Part ${sectionIndex}`;
+    heading.innerText = `Part ${testPartsHeadingNumbers[sectionIndex - 1]}`;
 
     // Append the heading and a horizontal rule
     testSection.appendChild(heading);
@@ -25,14 +78,17 @@ window.addEventListener(`load`, function () {
       const question = document.createElement(`section`);
       question.className = `questionBox`;
       question.innerHTML = `
-        <h2 class="questionNumber">Question ${index}:</h2>
-        <h4>Which field has different color?</h4>
-        <div class="colorBox">
-              <div>1</div>
-              <div>2</div>
-              <div>3</div>
-              <div>4</div>
-            </div>
+        <h2 class="questionNumber">Question ${index} ${
+        questionDifficulties[index - 1]
+      }:</h2>
+        <h4>Which field has different colour?</h4>
+        ${
+          sectionIndex == 2
+            ? `<div class="colourBox">
+                  ${generateColourCells(4, index)}
+               </div>`
+            : ``
+        }
         <p class="task">Select the correct answer:</p>
         <div class="answersBox">
         ${generateAnswers(sectionIndex, index, 4)}
@@ -55,13 +111,32 @@ window.addEventListener(`load`, function () {
   test.appendChild(handInButton);
 });
 
+// Generator for the answers HTML fields
 function generateAnswers(section, question, answersCount) {
   let result = ``;
   for (let index = 1; index <= answersCount; index++) {
     result += `<div class="answer">
-  <input type="radio" id="s${section}_q${question}_option${index}" name="s${section}_q${question}_answer" value="${index}" />
-  <label for="s${section}_q${question}_option${index}">${index}</label>
-</div>`;
+                  <input type="radio" id="s${section}_q${question}_option${index}" name="s${section}_q${question}_answer" value="${index}" />
+                  <label for="s${section}_q${question}_option${index}">${index}</label>
+               </div>`;
+  }
+
+  return result;
+}
+
+// Generator for the colour cells int the qustions
+function generateColourCells(cellsCount, currentQuestion) {
+  let result = ``;
+  for (let index = 1; index <= cellsCount; index++) {
+    if (testAnswers[currentQuestion] === index) {
+      result += `<div class="colourCell" style="background-color: ${
+        colourSets.special[currentQuestion - 1]
+      };">${index}</div>`;
+    } else {
+      result += `<div class="colourCell" style="background-color: ${
+        colourSets.common[currentQuestion - 1]
+      };">${index}</div>`;
+    }
   }
 
   return result;

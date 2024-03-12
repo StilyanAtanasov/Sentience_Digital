@@ -25,7 +25,11 @@
         <h1 class="logo">
           <i class="fa-brands fa-teamspeak"></i> Sentience Digital
         </h1>
-        <form>
+        <form
+          id="identityForm"
+          onsubmit="
+        event.preventDefault();"
+        >
           <div class="form-group">
             <label for="name">How should we call you?</label>
             <!-- Request for the user's name-->

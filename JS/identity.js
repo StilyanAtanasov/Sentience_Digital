@@ -1,11 +1,3 @@
-document
-  .querySelector("form")
-  .addEventListener("submit", async function (event) {
-    event.preventDefault();
-    const username = document.getElementById("username").value;
-    await setUserName(username);
-  });
-
 export function validateUsername(input) {
   let username = input.trim(); // Trim whitespace
 
@@ -46,4 +38,12 @@ export async function setUserName(username) {
   window.location.replace(
     `../main/main.html?username=${encodeURIComponent(username)}`
   );
+}
+
+const identityForm = document.getElementById(`identityForm`);
+if (identityForm != null) {
+  identityForm.addEventListener(`submit`, function () {
+    const username = document.getElementById("username").value;
+    setUserName(username);
+  });
 }
