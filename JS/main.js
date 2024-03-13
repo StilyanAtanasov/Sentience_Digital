@@ -1,5 +1,26 @@
 import { validateUsername } from "./identity.js";
 
+// --------- Handle User
+
+// User Score
+let username = ``;
+let score = 0;
+
+// Get the username from URL parameter
+const getParameterByName = (name) =>
+  new URLSearchParams(window.location.search).get(name) || "";
+
+// Get the username from URL parameter
+username = getParameterByName("username");
+// Validate the username if it was manualy changed
+if (!(await validateUsername(username)))
+  window.location.replace(`../identity/identity.html`);
+
+// Stop the access of the user to the main without being set their name
+if (window.location.pathname.endsWith(`/main.html`) && username == "") {
+  window.location.replace(`../identity/identity.html`);
+}
+
 // Initialize the static values for the page
 const colourSets = {
   special: [
@@ -102,7 +123,8 @@ window.addEventListener(`load`, function () {
   }
 
   // Generate a submit button
-  const handInButton = this.document.createElement(`button`);
+  const handInButton = document.createElement(`button`);
+  handInButton.id = `handInButton`;
   handInButton.className = `submitBTN`;
   handInButton.type = `submit`;
   handInButton.innerText = `Submit`;
@@ -110,6 +132,36 @@ window.addEventListener(`load`, function () {
   // Appent the button
   test.appendChild(handInButton);
 });
+
+const mainForm = document.getElementById(`test`);
+mainForm.onsubmit = function (event) {
+  event.preventDefault();
+  // Retrieve all answers boxes
+  const answerBoxes = document.querySelectorAll(".answersBox");
+
+  // Iterate through each answers box
+  for (let index = 10; index < answerBoxes.length; index++) {
+    // Retrieve all radio buttons within the current answers box
+    const radioButtons = answerBoxes[index].querySelectorAll(
+      'input[type="radio"]'
+    );
+    let selectedValue = null;
+
+    // Iterate through each radio button
+    radioButtons.forEach((radioButton) => {
+      // Check if the radio button is checked
+      if (radioButton.checked) {
+        // Retrieve the value of the selected radio button
+        selectedValue = parseInt(radioButton.value);
+      }
+    });
+
+    // Check if the selected value matches
+    if (selectedValue === testAnswers[index - 10]) score++;
+  }
+
+  alert(score);
+};
 
 // Generator for the answers HTML fields
 function generateAnswers(section, question, answersCount) {
@@ -128,7 +180,7 @@ function generateAnswers(section, question, answersCount) {
 function generateColourCells(cellsCount, currentQuestion) {
   let result = ``;
   for (let index = 1; index <= cellsCount; index++) {
-    if (testAnswers[currentQuestion] === index) {
+    if (testAnswers[currentQuestion - 1] === index) {
       result += `<div class="colourCell" style="background-color: ${
         colourSets.special[currentQuestion - 1]
       };">${index}</div>`;
@@ -140,25 +192,4 @@ function generateColourCells(cellsCount, currentQuestion) {
   }
 
   return result;
-}
-
-// --------- Handle User
-
-// User Score
-let username = ``;
-let score = -1;
-
-// Get the username from URL parameter
-const getParameterByName = (name) =>
-  new URLSearchParams(window.location.search).get(name) || "";
-
-// Get the username from URL parameter
-username = getParameterByName("username");
-// Validate the username if it was manualy changed
-if (!(await validateUsername(username)))
-  window.location.replace(`../identity/identity.html`);
-
-// Stop the access of the user to the main without being set their name
-if (window.location.pathname.endsWith(`/main.html`) && username == "") {
-  window.location.replace(`../identity/identity.html`);
 }
