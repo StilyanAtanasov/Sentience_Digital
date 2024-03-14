@@ -75,33 +75,33 @@ const testAnswers = generateRandomNumbers();
 console.log(testAnswers);
 
 // --------- Handle Page
-window.addEventListener(`load`, function () {
-  // Retrieve a reference the test form
-  const test = document.getElementById(`test`);
 
-  // Generate Test Parts
-  for (let sectionIndex = 1; sectionIndex <= 2; sectionIndex++) {
-    // Initialize a new section
-    const testSection = document.createElement(`section`);
+// Retrieve a reference the test form
+const test = document.getElementById(`test`);
 
-    // Initialize the part heading
-    const heading = document.createElement(`h2`);
-    heading.className = `testPart`;
-    heading.innerText = `Part ${testPartsHeadingNumbers[sectionIndex - 1]}`;
+// Generate Test Parts
+for (let sectionIndex = 1; sectionIndex <= 2; sectionIndex++) {
+  // Initialize a new section
+  const testSection = document.createElement(`section`);
 
-    // Append the heading and a horizontal rule
-    testSection.appendChild(heading);
-    testSection.appendChild(document.createElement(`hr`));
+  // Initialize the part heading
+  const heading = document.createElement(`h2`);
+  heading.className = `testPart`;
+  heading.innerText = `Part ${testPartsHeadingNumbers[sectionIndex - 1]}`;
 
-    // Generate Test Questions Per Part
-    for (let index = 1; index <= 10; index++) {
-      // Generate a new question an initialize 4 answers for each of them [calling the function generateAnswers with 4]
-      const question = document.createElement(`section`);
-      question.className = `questionBox`;
-      question.innerHTML = `
+  // Append the heading and a horizontal rule
+  testSection.appendChild(heading);
+  testSection.appendChild(document.createElement(`hr`));
+
+  // Generate Test Questions Per Part
+  for (let index = 1; index <= 10; index++) {
+    // Generate a new question an initialize 4 answers for each of them [calling the function generateAnswers with 4]
+    const question = document.createElement(`section`);
+    question.className = `questionBox`;
+    question.innerHTML = `
         <h2 class="questionNumber">Question ${index} ${
-        questionDifficulties[index - 1]
-      }:</h2>
+      questionDifficulties[index - 1]
+    }:</h2>
         <h4>Which field has different colour?</h4>
         ${
           sectionIndex == 2
@@ -116,22 +116,21 @@ window.addEventListener(`load`, function () {
         </div>
       `;
 
-      // Append the section
-      testSection.appendChild(question);
-      test.appendChild(testSection);
-    }
+    // Append the section
+    testSection.appendChild(question);
+    test.appendChild(testSection);
   }
+}
 
-  // Generate a submit button
-  const handInButton = document.createElement(`button`);
-  handInButton.id = `handInButton`;
-  handInButton.className = `submitBTN`;
-  handInButton.type = `submit`;
-  handInButton.innerText = `Submit`;
+// Generate a submit button
+const handInButton = document.createElement(`button`);
+handInButton.id = `handInButton`;
+handInButton.className = `submitBTN`;
+handInButton.type = `submit`;
+handInButton.innerText = `Submit`;
 
-  // Appent the button
-  test.appendChild(handInButton);
-});
+// Appent the button
+test.appendChild(handInButton);
 
 const mainForm = document.getElementById(`test`);
 mainForm.onsubmit = function (event) {
