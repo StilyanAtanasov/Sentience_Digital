@@ -1,6 +1,10 @@
+html {
+  font-size: 10px;
+}
+
 /* Body styles */
 body {
-  font-family: "Roboto", sans-serif; /* Use Roboto font */
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
@@ -11,20 +15,21 @@ body {
 
 /* Container styles */
 .container {
-  max-width: 600px;
+  max-width: 90rem;
   width: 100%;
   background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.1);
 }
 
 /* Heading styles */
 .questionNumber {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 3rem;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
   color: #333;
-  font-family: "Arial", sans-serif; /* Use Arial font for heading */
+  font-family: "Arial", sans-serif;
 }
 
 .testPart {
@@ -37,16 +42,17 @@ body {
 
 .questionBox h4 {
   text-align: center;
+  font-size: 2rem;
 }
 
 /* Color Box styles */
 .colourBox {
   width: 100%;
   height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 1.5rem;
   display: flex;
-  border: 1px solid #333;
-  border-radius: 20px;
+  border: 0.15rem solid #333;
+  border-radius: 3rem;
   overflow: hidden;
 }
 
@@ -54,35 +60,40 @@ body {
   width: 25%;
   height: auto;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2.25rem;
   font-weight: 700;
-  border: 1px solid #333;
+  border: 0.15rem solid #333;
 }
 
 /* Form styles */
 form {
-  margin: 20px;
-  border: 2px solid black;
-  border-radius: 20px;
-  padding: 30px 100px;
+  margin: 3rem;
+  border: 0.3rem solid black;
+  border-radius: 3rem;
+  padding: 4.5rem 10rem;
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  width: 60rem;
   align-items: center;
 }
 
 /* Radio button styles */
 input[type="radio"] {
-  margin-right: 5px;
+  margin-right: 0.75rem;
+  scale: 1.2;
 }
 
-/* Submit sutton styles */
+input[type="radio"] + label {
+  font-size: 2rem;
+}
+
+/* Submit button styles */
 .submitBTN {
-  padding: 10px 20px;
+  padding: 1.5rem 3rem;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.6rem;
   cursor: pointer;
 }
 
@@ -95,19 +106,29 @@ input[type="radio"] {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin: 10px 20px;
+  margin: 1.5rem 3rem;
 }
 
 .task {
   font-style: italic;
-  margin: 10px;
-  font-size: 18px;
+  margin: 1.5rem;
+  font-size: 1.8rem;
 }
 
 hr {
-  width: 25vw;
+  width: 3.75rem;
 }
 
 .testPart {
-  font-size: 30px;
+  font-size: 4.5rem;
+}
+
+@media (max-width: 1000px) {
+  html {
+    font-size: 8px;
+  }
+
+  form {
+    width: 60vw;
+  }
 }
