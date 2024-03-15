@@ -8,7 +8,8 @@ import {
   set,
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-require("dotenv").config();
+import { config } from "dotenv";
+config();
 
 const firebaseConfig = {
   apiKey: procces.env.FIREBASE_API_KEY,
@@ -39,3 +40,4 @@ function writeUserData(name, points) {
 }
 
 writeUserData("test2", 100);
+console.log(14);
