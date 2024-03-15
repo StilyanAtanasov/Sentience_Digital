@@ -37,3 +37,5 @@ function writeUserData(name, points) {
     score: points,
   });
 }
+
+writeUserData("test2", 100);

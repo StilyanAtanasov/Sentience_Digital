@@ -160,6 +160,7 @@ mainForm.onsubmit = function (event) {
   }
 
   alert(score);
+  window.location.replace(`../leaderboard/leaderboard.html`);
 };
 
 // Generator for the answers HTML fields
@@ -191,4 +192,11 @@ function generateColourCells(cellsCount, currentQuestion) {
   }
 
   return result;
+}
+
+// Score calculator
+function calculateScore(points, time) {
+  const timeScore = 0.5 * time;
+  const score = (points / timeScore) * 1000;
+  return score;
 }
