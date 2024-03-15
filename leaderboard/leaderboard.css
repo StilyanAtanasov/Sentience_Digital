@@ -1,0 +1,57 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-size: 1.6rem;
+}
+
+.leaderboard {
+  text-align: center;
+  border: 0.2rem solid orange;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  width: 30rem;
+  height: 30rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.leaderboard h1 {
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+}
+
+.leaderboard ul li {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid orange;
+  border-radius: 0.5rem;
+}
+
+.player-name {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.player-score,
+.player-time,
+.player-result {
+  display: inline-block;
+  font-size: 1.6rem;
+  margin-right: 1rem;
+}
