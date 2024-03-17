@@ -1,8 +1,5 @@
 "use strict";
 
-const dotenv = require("dotenv");
-dotenv.config({ path: `${__dirname}/config.env` });
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getDatabase,
