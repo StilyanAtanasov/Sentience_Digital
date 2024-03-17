@@ -49,7 +49,7 @@ const colourSets = {
   ],
 };
 const testPartsHeadingNumbers = [`I`, `II`];
-const questionDifficulties = [
+const questionDifficultiesPart2 = [
   `[Easy]`,
   `[Easy]`,
   `[Easy]`,
@@ -62,7 +62,7 @@ const questionDifficulties = [
   `[Extreme]`,
 ];
 
-// Generator of random numbers -- for the answers of the test
+// Generator of random numbers -- for the answers of the test part 2
 function generateRandomNumbers() {
   const numbers = [];
   for (let i = 0; i < 10; i++) numbers.push(Math.floor(Math.random() * 4) + 1);
@@ -70,8 +70,20 @@ function generateRandomNumbers() {
   return numbers;
 }
 
+const testAnswersPart1ByImages = [74, 16, 4, 6, 6, 9, 1, 2, 5, 2];
+
+const shuffle = (array) => array.sort(() => Math.random() - 0.5);
+const testAnswersPart1Order = shuffle(
+  Array.from({ length: 10 }, (_, index) => index + 1)
+); // All images Selection is by numbers[1..10] suffled
+
+const partOneKey = [];
+for (let index = 0; index < testAnswersPart1ByImages.length; index++)
+  partOneKey[index] =
+    testAnswersPart1ByImages[testAnswersPart1Order[index] - 1];
+
 // Generate randow answers for the test
-const testAnswers = generateRandomNumbers();
+const testAnswers = partOneKey.concat(generateRandomNumbers());
 console.log(testAnswers);
 
 // --------- Handle Page
@@ -98,23 +110,33 @@ for (let sectionIndex = 1; sectionIndex <= 2; sectionIndex++) {
     // Generate a new question an initialize 4 answers for each of them [calling the function generateAnswers with 4]
     const question = document.createElement(`section`);
     question.className = `questionBox`;
-    question.innerHTML = `
-        <h2 class="questionNumber">Question ${index} ${
-      questionDifficulties[index - 1]
-    }:</h2>
-        <h4>Which field has different colour?</h4>
-        ${
-          sectionIndex == 2
-            ? `<div class="colourBox">
-                  ${generateColourCells(4, index)}
-               </div>`
-            : ``
-        }
-        <p class="task">Select the correct answer:</p>
-        <div class="answersBox">
-        ${generateAnswers(sectionIndex, index, 4)}
-        </div>
+    question.innerHTML = ` ${sectionIndex === 2 ? `` : ``}
+        
+        ${sectionIndex == 2 ? `` : ``}
+        
       `;
+
+    question.innerHTML =
+      sectionIndex == 1
+        ? `<h2 class="questionNumber">Question ${index}:</h2>
+    <h4>What is written in the image?</h4>
+    <div class="imgBox">
+      <img src="../main/test images/${testAnswersPart1Order[index - 1]}.png" />
+    </div>
+    <p class="task">Type your answer below:</p>
+        <input type="text" class="userPrompt" />
+    `
+        : ` <h2 class="questionNumber">Question ${index} ${
+            questionDifficultiesPart2[index - 1]
+          }:</h2>
+            <h4>Which field has different colour?</h4>
+            <div class="colourBox">
+              ${generateColourCells(4, index)}
+            </div>
+            <p class="task">Select the correct answer:</p>
+            <div class="answersBox">
+              ${generateAnswers(sectionIndex, index, 4)}
+            </div>`;
 
     // Append the section
     testSection.appendChild(question);
@@ -139,7 +161,7 @@ mainForm.onsubmit = function (event) {
   const answerBoxes = document.querySelectorAll(".answersBox");
 
   // Iterate through each answers box
-  for (let index = 10; index < answerBoxes.length; index++) {
+  for (let index = 0; index < answerBoxes.length; index++) {
     // Retrieve all radio buttons within the current answers box
     const radioButtons = answerBoxes[index].querySelectorAll(
       'input[type="radio"]'
@@ -148,7 +170,6 @@ mainForm.onsubmit = function (event) {
 
     // Iterate through each radio button
     radioButtons.forEach((radioButton) => {
-      // Check if the radio button is checked
       if (radioButton.checked) {
         // Retrieve the value of the selected radio button
         selectedValue = parseInt(radioButton.value);
@@ -156,7 +177,12 @@ mainForm.onsubmit = function (event) {
     });
 
     // Check if the selected value matches
-    if (selectedValue === testAnswers[index - 10]) score++;
+    if (selectedValue === testAnswers[index + 10]) score++;
+  }
+
+  const userArguments = document.querySelectorAll(".userPrompt");
+  for (let index = 0; index < userArguments.length; index++) {
+    if (parseInt(userArguments[index].value) === testAnswers[index]) score++;
   }
 
   alert(score);
@@ -180,7 +206,7 @@ function generateAnswers(section, question, answersCount) {
 function generateColourCells(cellsCount, currentQuestion) {
   let result = ``;
   for (let index = 1; index <= cellsCount; index++) {
-    if (testAnswers[currentQuestion - 1] === index) {
+    if (testAnswers[currentQuestion - 1 + 10] === index) {
       result += `<div class="colourCell" style="background-color: ${
         colourSets.special[currentQuestion - 1]
       };">${index}</div>`;
