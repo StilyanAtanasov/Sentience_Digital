@@ -8,6 +8,8 @@ import {
   set,
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
+require("dotenv").config();
+
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
