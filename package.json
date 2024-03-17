@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "firebase": "^10.7.1"
   }
 }
