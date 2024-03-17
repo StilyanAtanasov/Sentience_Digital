@@ -40,6 +40,11 @@ body {
   align-items: center;
 }
 
+.questionBox {
+  display: flex;
+  flex-direction: column;
+}
+
 .questionBox h4 {
   text-align: center;
   font-size: 2rem;
@@ -95,6 +100,9 @@ input[type="radio"] + label {
   border: none;
   border-radius: 0.6rem;
   cursor: pointer;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  width: 40%;
 }
 
 .submitBTN:hover {
@@ -115,12 +123,38 @@ input[type="radio"] + label {
   font-size: 1.8rem;
 }
 
-hr {
-  width: 3.75rem;
+.imgBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(34, 33, 33);
+}
+
+img {
+  width: 40rem;
+  height: auto;
+}
+
+.userPrompt {
+  font-size: 2rem;
+  text-align: center;
+  color: #0056b3;
 }
 
 .testPart {
   font-size: 4.5rem;
+}
+
+@media (min-width: 4000px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 2500px) {
+  html {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -130,5 +164,17 @@ hr {
 
   form {
     width: 60vw;
+  }
+}
+
+@media (max-width: 550px) {
+  html {
+    font-size: 6px;
+  }
+}
+
+@media (max-width: 350px) {
+  html {
+    font-size: 5px;
   }
 }

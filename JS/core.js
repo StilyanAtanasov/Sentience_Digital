@@ -1,5 +1,8 @@
 "use strict";
 
+const dotenv = require("dotenv");
+dotenv.config({ path: `${__dirname}/config.env` });
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getDatabase,
@@ -7,9 +10,6 @@ import {
   push,
   set,
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-
-import { config } from "dotenv";
-config();
 
 const firebaseConfig = {
   apiKey: procces.env.FIREBASE_API_KEY,
