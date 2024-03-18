@@ -171,6 +171,9 @@ img {
   html {
     font-size: 6px;
   }
+  .submitBTN {
+    padding: 0.5rem;
+  }
 }
 
 @media (max-width: 350px) {
