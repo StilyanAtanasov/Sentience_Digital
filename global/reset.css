@@ -26,6 +26,10 @@ ol[role='list'] {
 }
 
 /* Set core root defaults */
+html {
+    font-size: 10px;
+}
+
 html:focus-within {
     scroll-behavior: smooth;
 }
@@ -33,6 +37,10 @@ html:focus-within {
 /* Set core body defaults */
 body {
     min-height: 100vh;
+    background:
+        radial-gradient(circle at 85% 12%, #fff1c9 0, transparent 28%),
+        linear-gradient(135deg, #f3f5f2, #e6eef3);
+    color: var(--ink, #1f2933);
     text-rendering: optimizeSpeed;
     line-height: 1.5;
 }
@@ -57,6 +65,13 @@ select {
     font: inherit;
 }
 
+/* Global focus indicator for interactive elements */
+:focus-visible {
+    outline: 3px solid #2364aa;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {
@@ -71,4 +86,4 @@ select {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-}
+}

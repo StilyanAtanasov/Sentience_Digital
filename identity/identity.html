@@ -1,16 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Identity page</title>
+    <title>Sentience Digital | Enter</title>
+
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+
     <link
       rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="/components/loader.css" />
+    <link rel="stylesheet" href="../global/reset.css" />
+    <link rel="stylesheet" href="../components/loader.css" />
     <link rel="stylesheet" href="identity.css" />
+
+    <script defer src="../JS/identity.js" type="module"></script>
   </head>
   <body>
     <!-- 
@@ -22,32 +27,38 @@
 
     <main>
       <section class="container">
-        <h1 class="logo">
-          <i class="fa-brands fa-teamspeak"></i> Sentience Digital
-        </h1>
-        <form
-          id="identityForm"
-          onsubmit="
-        event.preventDefault();"
-        >
+        <div class="brand-lockup">
+          <div class="logo-slot" aria-label="Logo placeholder">
+            <img src="/assets/logo.svg" alt="Logo" />
+          </div>
+          <p class="eyebrow">Sentience Digital</p>
+        </div>
+        <h1 class="logo">Focus, then Begin.</h1>
+        <form id="identityForm">
           <div class="form-group">
-            <label for="name">How should we call you?</label>
+            <label for="username">How should we call you?</label>
             <!-- Request for the user's name-->
             <input
               type="text"
               id="username"
-              name="name"
+              name="username"
               placeholder="Your name..."
+              maxlength="40"
+              autocomplete="nickname"
               required
             />
-            <button class="submit" href="" type="submit">
-              <i class="fa-regular fa-check"></i>
+            <button class="submit" type="submit" aria-label="Submit username">
+              <i class="fa-solid fa-check"></i>
             </button>
           </div>
+          <p id="usernameStatus" class="username-status" aria-live="polite"></p>
           <p class="context">
             "Your name will be used to display your position in the
             leaderboard."
           </p>
+          <a class="leaderboard-link" href="../leaderboard/leaderboard"
+            ><i class="fa-solid fa-ranking-star"></i> Leaderboard</a
+          >
         </form>
       </section>
     </main>
@@ -58,7 +69,5 @@
     </section>
 
     <script src="../JS/loader.js"></script>
-    <script src="../JS/core.js" type="module"></script>
-    <script src="../JS/identity.js" type="module"></script>
   </body>
 </html>

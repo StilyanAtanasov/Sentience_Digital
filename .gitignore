@@ -3,3 +3,7 @@ node_modules/
 
 # Ignore .env file
 .env
+.vercel
+test-results/
+playwright-report/
+blob-report/

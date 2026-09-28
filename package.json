@@ -1,6 +1,20 @@
 {
+  "name": "sentience-digital",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "test:e2e": "playwright test",
+    "test:all": "npm test && npm run test:e2e"
+  },
   "dependencies": {
-    "firebase": "^10.7.1"
+    "@upstash/redis": "^1.38.2",
+    "firebase-admin": "^14.5.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "serve": "^14.2.5"
   }
 }

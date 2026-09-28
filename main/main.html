@@ -1,15 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sentience Digital</title>
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="/components/loader.css" />
+
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="../global/reset.css" />
+    <link rel="stylesheet" href="../components/loader.css" />
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
     <main>
+      <div id="timer" aria-label="Elapsed time" role="timer"></div>
       <form id="test" method="post" style="background-color: #fff"></form>
     </main>
 
@@ -18,8 +22,6 @@
       <div class="loader"></div>
     </section>
 
-    <script src="../JS/loader.js"></script>
     <script src="../JS/main.js" type="module"></script>
-    <script src="../JS/core.js" type="module"></script>
   </body>
 </html>

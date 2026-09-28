@@ -1,29 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Centered Leaderboard</title>
+    <title>Sentience Digital | Leaderboard</title>
+
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="../global/reset.css" />
+    <link rel="stylesheet" href="../components/loader.css" />
     <link rel="stylesheet" href="leaderboard.css" />
   </head>
   <body>
-    <div class="leaderboard">
-      <h1>Leaderboard</h1>
-      <ul id="leaderboardPlayersBox">
-        <li>
-          <span class="player-name">Player 1</span>
-          <span class="player-score">Points: 100</span>
-          <span class="player-time">Time: 1:30</span>
-          <span class="player-result">Result: 514</span>
-        </li>
-        <li>
-          <span class="player-name">Player 2</span>
-          <span class="player-score">Points: 85</span>
-          <span class="player-time">Time: 2:00</span>
-          <span class="player-result">Result: 520</span>
-        </li>
-      </ul>
-    </div>
+    <main class="leaderboard-shell">
+      <header class="leaderboard-header">
+        <div class="brand-lockup">
+          <div class="logo-slot" aria-label="Logo placeholder">
+            <img src="/assets/logo.svg" alt="Logo" />
+          </div>
+          <div>
+            <p class="eyebrow">Sentience Digital</p>
+            <h1>Leaderboard</h1>
+          </div>
+        </div>
+        <a href="../identity/identity" class="take-test-cta"
+          >Take the Test &rarr;</a
+        >
+      </header>
+
+      <p class="header-note">Top 100 results</p>
+
+      <section class="leaderboard-panel" aria-live="polite">
+        <div class="table-heading">
+          <span>Player</span>
+          <span>Score</span>
+        </div>
+        <p id="leaderboardStatus" class="leaderboard-status">
+          Loading results...
+        </p>
+        <ul id="leaderboardPlayersBox"></ul>
+      </section>
+    </main>
+    <section id="loaderBox" class="loaderBox" aria-label="Loading leaderboard">
+      <div class="loader"></div>
+    </section>
     <script type="module" src="leaderboard.js"></script>
   </body>
 </html>
