@@ -11,10 +11,14 @@
   },
   "dependencies": {
     "@upstash/redis": "^1.38.2",
-    "firebase-admin": "^14.5.0"
+    "firebase-admin": "^14.5.0",
+    "jose": "^4.15.9"
   },
   "devDependencies": {
     "@playwright/test": "^1.62.1",
     "serve": "^14.2.5"
+  },
+  "overrides": {
+    "jose": "^4.15.9"
   }
 }
